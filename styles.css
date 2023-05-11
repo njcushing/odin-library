@@ -169,7 +169,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .new-book-form-background {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
@@ -210,4 +210,29 @@ h1, h2, h3, h4, h5, h6 {
     width: 104%;
     height: 2px;
     background-color: #bdbdbd;
+}
+
+.form-field-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+.form-field-container form {
+    grid-template-rows: subgrid;
+}
+
+.form-field-container label {
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.form-field-container input {
+    font-size: 0.7rem;
+    outline: none;
+    border: 1px solid #000;
+    border-radius: 9999px;
+    width: 300px;
+    height: 1.4rem;
 }
