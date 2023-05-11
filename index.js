@@ -27,12 +27,14 @@ function createBookElement(index) {
     const bookReadIndicator = document.createElement("div");
     const bookSeparator = document.createElement("div");
     const bookMarkAsReadButton = createBookElementButton(library[index].read);
+    const bookRemoveButton = createBookRemoveButton(library[index].read);
 
     bookNameAndAuthorContainer.classList.add("book-name-and-author-container");
     bookReadIndicator.classList.add("book-read-indicator");
     bookSeparator.classList.add("book-card-separator");
 
     bookMarkAsReadButton.addEventListener("click", bookElementRead);
+    bookRemoveButton.addEventListener("click", bookRemove);
 
     newBook.appendChild(bookNameAndAuthorContainer);
     bookNameAndAuthorContainer.appendChild(bookName);
@@ -42,6 +44,7 @@ function createBookElement(index) {
     newBook.appendChild(bookReadIndicator);
     newBook.appendChild(bookSeparator);
     newBook.appendChild(bookMarkAsReadButton);
+    newBook.appendChild(bookRemoveButton);
 
     libraryContainer.appendChild(newBook);
 }
@@ -74,6 +77,13 @@ function createBookElementButton(read) {
     return bookMarkAsReadButton;
 }
 
+function createBookRemoveButton() {
+    const bookRemoveButton = document.createElement("button");
+    bookRemoveButton.classList.add("book-remove");
+    bookRemoveButton.textContent = "Remove book from library";
+    return bookRemoveButton;
+}
+
 function bookElementButtonString(read) {
     if (read) {
         return "Mark book as unread";
@@ -90,6 +100,10 @@ function bookElementRead(e) {
         e.target.parentNode.setAttribute("read", "false");
         e.target.textContent = bookElementButtonString(false);
     }
+}
+
+function bookRemove(e) {
+    e.target.parentNode.parentNode.removeChild(e.target.parentNode);
 }
 
 /* Default Books */
