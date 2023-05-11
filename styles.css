@@ -70,19 +70,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .library {
-	display: flex;
-    flex-direction: column;
-	align-content: center;
-    padding: 20px;
-    background-color: #ececec;
-}
-
-.book-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, 240px);
     justify-content: center;
     gap: 20px;
-
+    padding: 20px;
+    background-color: #ececec;
 }
 
 .book {
