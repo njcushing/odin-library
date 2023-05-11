@@ -167,3 +167,47 @@ h1, h2, h3, h4, h5, h6 {
 .book-remove:active {
     background-color: rgb(119, 19, 19);
 }
+
+.new-book-form-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.new-book-form-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    margin-top: -200px;
+    margin-left: -200px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    border-radius: 20px;
+    background-color: #fff;
+    border: 2px solid #3d3d3d;
+    padding: 20px;
+    gap: 10px;
+}
+
+.new-book-form-container > * {
+    /* border: 1px solid #000; */
+}
+
+.form-title {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 0px;
+}
+
+.form-title-separator {
+    justify-self: center;
+    border-radius: 9999px;
+    width: 104%;
+    height: 2px;
+    background-color: #bdbdbd;
+}
