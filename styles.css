@@ -17,3 +17,47 @@ body {
         sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 20px;
 }
+
+.no-select {
+    -webkit-touch-callout: none;    /* iOS Safari */
+    -webkit-user-select: none;      /* Safari */
+    -khtml-user-select: none;       /* Konqueror HTML */
+    -moz-user-select: none;         /* Old versions of Firefox */
+    -ms-user-select: none;          /* Internet Explorer/Edge */
+    user-select: none;              /* Non-prefixed version, currently
+                                       supported by Chrome, Edge, Opera and Firefox */
+}
+
+h2 {
+    padding: 0px;
+    margin: 0px;
+}
+
+.content {
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.header {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.8rem;
+    color: white;
+    background-color: #3097a5;
+    box-shadow: 0px 4px 5px -0px rgba(128, 128, 128, 0.3);
+    white-space: nowrap;
+}
+
+.new-book-button {
+    font-family: var(--nunito-font-family);
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 9999px;
+    color: white;
+    background-color: #2cbd74;
+    border: 2px solid white;
+    height: 2rem;
+    width: 8rem;
+}
