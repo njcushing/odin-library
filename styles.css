@@ -80,15 +80,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .book {
     display: grid;
-    grid-template-rows: repeat(2, auto) 1fr repeat(2, auto);
+    grid-template-rows: repeat(2, auto) 1fr repeat(3, auto);
     text-align: center;
     background-image: linear-gradient(180deg, rgb(30, 216, 169), rgb(30, 216, 169) 8px, rgb(255, 255, 255) 8px);
     border-radius: 0.8rem;
     box-shadow: 0px 4px 5px -0px rgba(128, 128, 128, 0.3);
     height: 240px;
-    border: 1px solid #000;
+    border: 2px solid #3d3d3d;
     padding: 16px 18px 14px 18px;
     gap: 10px;
+}
+.book[read="false"] {
+    background-image: linear-gradient(180deg, #f7bb3b, #f7bb3b 8px, rgb(255, 255, 255) 8px);
 }
 
 .book-name {
@@ -104,6 +107,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .book-pages {
+    font-size: 0.9rem;
+}
+
+.book-read-indicator {
+    font-size: 0.64rem;
+}
+.book[read="true"] > .book-read-indicator::before {
+    content: "You have read this book.";
+}
+.book[read="false"] > .book-read-indicator::before {
+    content: "You have not read this book.";
 }
 
 .book-card-separator {
@@ -116,9 +130,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .book-mark-as-read {
     font-family: var(--nunito-font-family);
-    font-size: 0.8rem;
+    font-size: 0.64rem;
+    font-weight: bold;
     border-radius: 1rem;
-    color: rgb(0, 0, 0);
+    color: rgb(46, 46, 46);
     background-color: rgb(30, 216, 169);
     border: none;
     height: 1.4rem;
@@ -129,4 +144,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 .book-mark-as-read:active {
     background-color: rgb(16, 184, 142);
+}
+.book[read="false"] > .book-mark-as-read {
+    background-color: #f7bb3b;
+}
+.book[read="false"] > .book-mark-as-read:hover {
+    background-color: #fdcb5f;
+}
+.book[read="false"] > .book-mark-as-read:active {
+    background-color: #dd9c11;
 }
