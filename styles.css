@@ -1,0 +1,19 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Staatliches&display=swap');
+
+body {
+    font-family: Nunito, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+        sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: var(--nunito-font-family);
+    margin: 0;
+    justify-content: center;
+    min-width: 100vw;
+    min-height: 100vh;
+    height: 100vh;
+}
+
+:root {
+    --nunito-font-family: Nunito, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+        sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 20px;
+}
