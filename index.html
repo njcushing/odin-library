@@ -21,19 +21,26 @@
                 <form action="" method="post">
                     <li class="form-field-container">
                         <label for="bookName">Book Name</label>
-                        <input type="text" name="bookName" id="bookName">
+                        <input type="text" name="bookName" id="bookName" required
+                        title="Please enter a title for this book">
                     </li>
                     <li class="form-field-container">
                         <label for="bookAuthor">Book Author</label>
-                        <input type="text" name="bookAuthor" id="bookAuthor">
+                        <input type="text" name="bookAuthor" id="bookAuthor" required
+                        title="Please enter the author's name">
                     </li>
                     <li class="form-field-container">
                         <label for="bookPageCount">Page Count</label>
-                        <input type="text" name="bookPageCount" id="bookPageCount">
+                        <input type="number" name="bookPageCount" id="bookPageCount" min=1 required
+                        title="Please enter the number of pages this book contains">
                     </li>
                     <li class="form-field-container">
-                        <label for="bookRead">Book Read</label>
+                        <label for="bookRead">Have you already read this book?</label>
                         <input type="checkbox" name="bookRead" id="bookRead">
+                    </li>
+                    <li class="new-book-form-buttons">
+                        <button class="new-book-cancel" type="button">Cancel</button>
+                        <button class="new-book-create" type="submit">Create</button>
                     </li>
                 </form>
             </div>
