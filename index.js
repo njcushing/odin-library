@@ -150,6 +150,7 @@ function closeNewBookForm(e) {
         ".new-book-form-background"
     );
     newBookParentElement.setAttribute("off", "");
+    resetNewBookFormFields();
 }
 function resetNewBookFormFields() {
     newBookForm.reset();
@@ -166,7 +167,6 @@ function createNewBookFromForm(e) {
         bookRead
     );
     closeNewBookForm();
-    resetNewBookFormFields();
 }
 
 /* Default Books */
