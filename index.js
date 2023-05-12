@@ -27,6 +27,7 @@ function createBookElement(index) {
     const newBook = document.createElement("div");
 
     newBook.classList.add("book");
+    newBook.setAttribute("bookIndex", index);
     newBook.setAttribute("read", library[index].read);
 
     const bookNameAndAuthorContainer = document.createElement("div");
@@ -56,6 +57,10 @@ function createBookElement(index) {
     newBook.appendChild(bookRemoveButton);
 
     libraryContainer.appendChild(newBook);
+}
+
+function updateBookReadStatus(index, read) {
+    library[index].read = read;
 }
 
 function createBookElementName(name) {
@@ -105,14 +110,33 @@ function bookElementRead(e) {
     if (read === "false") {
         e.target.parentNode.setAttribute("read", "true");
         e.target.textContent = bookElementButtonString(true);
+        updateBookReadStatus(
+            e.target.parentNode.getAttribute("bookIndex"),
+            true
+        );
     } else if (read === "true") {
         e.target.parentNode.setAttribute("read", "false");
         e.target.textContent = bookElementButtonString(false);
+        updateBookReadStatus(
+            e.target.parentNode.getAttribute("bookIndex"),
+            false
+        );
     }
 }
 
 function bookRemove(e) {
+    const index = e.target.parentNode.getAttribute("bookIndex");
     e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+
+    library.splice(index, 1);
+
+    const books = document.querySelectorAll(".book");
+    let i = 0;
+    books.forEach((book) => {
+        book.setAttribute("bookIndex", i);
+        i++;
+    });
+    console.log(library);
 }
 
 function openNewBookForm(e) {
@@ -125,7 +149,6 @@ function closeNewBookForm(e) {
     const newBookParentElement = document.querySelector(
         ".new-book-form-background"
     );
-    console.log(newBookParentElement);
     newBookParentElement.setAttribute("off", "");
 }
 function resetNewBookFormFields() {
