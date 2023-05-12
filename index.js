@@ -1,4 +1,10 @@
 const library = [];
+const newBookButton = document.querySelector(".new-book-button");
+const newBookFormCancelButton = document.querySelector(".new-book-cancel");
+const newBookFormCreateButton = document.querySelector(".new-book-create");
+
+newBookButton.addEventListener("click", openNewBookForm);
+newBookFormCancelButton.addEventListener("click", closeNewBookForm);
 
 function Book(name, author, pages, read) {
     this.name = name;
@@ -104,6 +110,20 @@ function bookElementRead(e) {
 
 function bookRemove(e) {
     e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+}
+
+function openNewBookForm(e) {
+    const newBookParentElement = document.querySelector(
+        ".new-book-form-background"
+    );
+    newBookParentElement.removeAttribute("off");
+}
+function closeNewBookForm(e) {
+    const newBookParentElement = document.querySelector(
+        ".new-book-form-background"
+    );
+    console.log(newBookParentElement);
+    newBookParentElement.setAttribute("off", "");
 }
 
 /* Default Books */

@@ -176,12 +176,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .new-book-form-background {
+    display: initial;
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
+}
+.new-book-form-background[off] {
+    display: none;
 }
 
 .new-book-form-container {
