@@ -1,10 +1,13 @@
 const library = [];
+
 const newBookButton = document.querySelector(".new-book-button");
 const newBookFormCancelButton = document.querySelector(".new-book-cancel");
 const newBookFormCreateButton = document.querySelector(".new-book-create");
+const newBookForm = document.querySelector(".new-book-form");
 
 newBookButton.addEventListener("click", openNewBookForm);
 newBookFormCancelButton.addEventListener("click", closeNewBookForm);
+newBookForm.addEventListener("submit", createNewBookFromForm);
 
 function Book(name, author, pages, read) {
     this.name = name;
@@ -124,6 +127,23 @@ function closeNewBookForm(e) {
     );
     console.log(newBookParentElement);
     newBookParentElement.setAttribute("off", "");
+}
+function resetNewBookFormFields() {
+    newBookForm.reset();
+}
+
+function createNewBookFromForm(e) {
+    e.preventDefault(); /* Prevents the page from refreshing when the form is submitted */
+    const formData = Object.fromEntries(new FormData(e.target).entries());
+    const bookRead = !!formData.bookRead;
+    addBookToLibrary(
+        formData.bookName,
+        formData.bookAuthor,
+        formData.bookPageCount,
+        bookRead
+    );
+    closeNewBookForm();
+    resetNewBookFormFields();
 }
 
 /* Default Books */
