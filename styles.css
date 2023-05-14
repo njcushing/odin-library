@@ -208,10 +208,6 @@ h1, h2, h3, h4, h5, h6 {
     gap: 10px;
 }
 
-.new-book-form-container > * {
-    /* border: 1px solid #000; */
-}
-
 .form-title {
     text-align: center;
     font-size: 1.2rem;
