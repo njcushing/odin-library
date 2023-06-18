@@ -156,6 +156,9 @@ const displayControl = (() => {
             ".new-book-form-background"
         );
         newBookParentElement.removeAttribute("off");
+        _validateBookName();
+        _validateBookAuthor();
+        _validateBookPageCount();
     };
     newBookButton.addEventListener("click", openNewBookForm);
 
@@ -172,19 +175,61 @@ const displayControl = (() => {
         newBookForm.reset();
     };
 
+    const nameInput = document.querySelector("#bookName");
+    const _validateBookName = () => {
+        if (nameInput.value.length < 1) {
+            nameInput.setCustomValidity(
+                "Please enter the name of your book into this field."
+            );
+            return;
+        }
+        nameInput.setCustomValidity("");
+    };
+    nameInput.addEventListener("input", _validateBookName);
+
+    const authorInput = document.querySelector("#bookAuthor");
+    const _validateBookAuthor = () => {
+        if (authorInput.value.length < 1) {
+            authorInput.setCustomValidity(
+                "Please enter the author of your book into this field."
+            );
+            return;
+        }
+        authorInput.setCustomValidity("");
+    };
+    authorInput.addEventListener("input", _validateBookAuthor);
+
+    const pageCountInput = document.querySelector("#bookPageCount");
+    const _validateBookPageCount = () => {
+        if (pageCountInput.value < 1) {
+            pageCountInput.setCustomValidity(
+                "Please enter the number of pages in your book here (a minimum of 1 page)."
+            );
+            return;
+        }
+        pageCountInput.setCustomValidity("");
+    };
+    pageCountInput.addEventListener("input", _validateBookPageCount);
+
     function _createNewBookFromForm(e) {
-        e.preventDefault(); /* Prevents the page from refreshing when the form is submitted */
-        const formData = Object.fromEntries(new FormData(e.target).entries());
-        const bookRead = !!formData.bookRead;
-        library.addBook(
-            Book(
-                formData.bookName,
-                formData.bookAuthor,
-                formData.bookPageCount,
-                bookRead
-            )
-        );
-        closeNewBookForm();
+        e.preventDefault();
+        if (e.target.checkValidity()) {
+            const formData = Object.fromEntries(
+                new FormData(e.target).entries()
+            );
+            const bookRead = !!formData.bookRead;
+            library.addBook(
+                Book(
+                    formData.bookName,
+                    formData.bookAuthor,
+                    formData.bookPageCount,
+                    bookRead
+                )
+            );
+            closeNewBookForm();
+        } else {
+            e.target.reportValidity();
+        }
     }
     newBookForm.addEventListener("submit", _createNewBookFromForm);
 
